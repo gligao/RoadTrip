@@ -1,0 +1,67 @@
+﻿@model RoadTrip.Models.Country
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+
+    <table class="table table-details">
+        <tr>
+            <td>
+                <img src="@Html.DisplayFor(model =>model.Image)" width="200" alt="" />
+            </td>
+            <td>
+                <b>Continent:</b> @Html.DisplayFor(model => model.Continent.Name)
+                <br /><br />
+                @Html.DisplayFor(model => model.Description)
+            </td>
+            <td class="bottom-options">
+                @Html.ActionLink("Edit", "Edit", new { idCountry = Model.CountryId, idContinent = Model.ContinentId })<hr />
+                @Html.ActionLink("Delete", "Delete", new { id = Model.CountryId, idContinent = Model.ContinentId })<hr />
+                @Html.ActionLink("Back to countries", "Index", new { id = Model.ContinentId })<hr />
+                @Html.ActionLink("Add attraction", "Create", "Attractions", new { id = Model.ContinentId }, null)
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>
+                Attraction
+            </th>
+            <th>
+                Region
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Attractions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" width="100" alt="" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="bottom-options">
+</div>

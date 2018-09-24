@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Road Trip</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="background">
+    <div class="container body-content">
+        <nav id="nav_bar" class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Countries", new { id = ViewBag.Continent })">@ViewBag.ContinentName</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="custom-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Attractions", new { id = ViewBag.Continent })">Attractions</a></li>
+                        <li><a href="@Url.Action("Create", ViewBag.Page, new { id = ViewBag.Continent })">Add @ViewBag.Page</a></li>
+                        @if (ViewBag.HideSort == null)
+                        {
+                            <li><a href="@Url.Action("Index", ViewBag.Page, new {sortOrder = ViewBag.NameSortParameter })">Sort by name</a></li>
+                        }
+
+                    </ul>
+
+                    <div class="search-form">
+                        @if (ViewBag.Page == "Countries")
+                        {
+                            using (Html.BeginForm("Index", "Countries", new { id = ViewBag.Continent }, FormMethod.Get))
+                            {
+                                @Html.TextBox("Search", "", new { @class = "input-form" })
+                                <input type="submit" value="Search" class="btn button-form" />
+                            }
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("Index", "Attractions", new { id = ViewBag.Continent }, FormMethod.Get))
+                            {
+                                @Html.TextBox("Search", "", new { @class = "input-form" })
+                                <input type="submit" value="Search" class="btn button-form" />
+                            }
+                        }
+                    </div>
+                </div>
+            </div><!-- .container -->
+        </nav>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/custom.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

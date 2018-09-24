@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Road Trip</title>
+
+    <!-- CSSMap STYLESHEET - CONTINENTS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/cssmap-continents/cssmap-continents.css" media="screen" />
+    <!-- STYLESHEET - Site -->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+
+<body class="home-body">
+
+    <div class="container">
+        <h1 class="home-title">Welcome to Road Trip Planner. Please start by choosing a continent.</h1>
+    </div>
+
+    <!-- CSSMap - Continents -->
+    <div id="map-continents">
+        <ul class="continents">
+            <li class="c1"><a href="@Url.Action("Index", "Countries", new { id=3 })">Africa</a></li>
+            <li class="c2"><a href="@Url.Action("Index", "Countries", new { id=2 })">Asia</a></li>
+            <li class="c3"><a href="@Url.Action("Index", "Countries", new { id=4 })">Australia</a></li>
+            <li class="c4"><a href="@Url.Action("Index", "Countries", new { id=1 })">Europe</a></li>
+            <li class="c5"><a href="@Url.Action("Index", "Countries", new { id=5 })">North America</a></li>
+            <li class="c6"><a href="@Url.Action("Index", "Countries", new { id=6 })">South America</a></li>
+        </ul>
+    </div>
+    <!-- END OF THE CSSMap - Continents -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cssmapsplugin.com/5/jquery.cssmap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // CSSMap;
+            $("#map-continents").CSSMap({
+                "size": 1280,
+                "mapStyle": "vintage",
+                "tooltips": "visible",
+                "responsive": "auto",
+                "tapOnce": true,
+                "mobileSupport": true
+            });
+            // END OF THE CSSMap;
+
+        });
+    </script>
+
+</body>
+</html>

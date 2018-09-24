@@ -1,0 +1,24 @@
+﻿@model IEnumerable<RoadTrip.Models.Country>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-4" style="text-align:center;">
+                <div class="country-box">
+                    <a href="@Url.Action("Details", "Countries", new { idCountry=item.CountryId, idContinent=item.ContinentId })">
+                        <img src="@Html.DisplayFor(modelItem => item.Image)" alt="@item.Image" />
+                        <div class="country-name">@Html.DisplayFor(modelItem => item.Name)</div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="bottom-options">
+</div>

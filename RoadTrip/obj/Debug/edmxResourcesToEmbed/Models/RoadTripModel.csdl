@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RoadTripModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Attraction">
+    <Key>
+      <PropertyRef Name="AttractionId" />
+    </Key>
+    <Property Name="AttractionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Attraction_Country" FromRole="Attraction" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Continent">
+    <Key>
+      <PropertyRef Name="ContinentId" />
+    </Key>
+    <Property Name="ContinentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Country_Continent" FromRole="Continent" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContinentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Attractions" Relationship="Self.FK_Attraction_Country" FromRole="Country" ToRole="Attraction" />
+    <NavigationProperty Name="Continent" Relationship="Self.FK_Country_Continent" FromRole="Country" ToRole="Continent" />
+  </EntityType>
+  <Association Name="FK_Attraction_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Attraction" Type="Self.Attraction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Attraction">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Country_Continent">
+    <End Role="Continent" Type="Self.Continent" Multiplicity="1" />
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Continent">
+        <PropertyRef Name="ContinentId" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="ContinentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RoadTripEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attractions" EntityType="Self.Attraction" />
+    <EntitySet Name="Continents" EntityType="Self.Continent" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <AssociationSet Name="FK_Attraction_Country" Association="Self.FK_Attraction_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Attraction" EntitySet="Attractions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Country_Continent" Association="Self.FK_Country_Continent">
+      <End Role="Continent" EntitySet="Continents" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

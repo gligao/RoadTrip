@@ -1,0 +1,205 @@
+﻿/* Set padding to keep content from hitting the edges */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* ---------------------------------------------- /*
+ * Default Layout settings
+/* ---------------------------------------------- */
+.background {
+    background-image: url("../Content/Images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.body-content {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.body-content table, h2, h3, h4 {
+    text-shadow: 1px 1px 5px black;
+}
+
+/* ---------------------------------------------- /*
+ * Home page settings
+/* ---------------------------------------------- */
+.home-title {
+    font-family: 'Brush Script MT';
+    font-size: 33px;
+}
+
+.home-body {
+    text-align: center;
+    background-color: mintcream;
+}
+
+/* ---------------------------------------------- /*
+ * Country display design
+/* ---------------------------------------------- */
+.country-box {
+    position: relative;
+    text-align: center;
+    width: 200px;
+    height: 300px;
+}
+
+.country-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Brush Script MT';
+    font-size: 35px;
+    font-weight: 900;
+    text-shadow: 2px 2px 3px white, -2px -2px 3px white;
+    color: black;
+}
+
+.country-box img {
+    width: 200px;
+    max-height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ---------------------------------------------- /*
+ * Navbar style
+/* ---------------------------------------------- */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin:0 -15px 0 -15px;
+}
+
+.navbar-brand, .navbar-nav, .navbar-nav > li > a {
+    font-family: 'Courier New';
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.navbar-brand {
+    height: 40px;
+    padding-bottom: 0;
+    color: white;
+}
+
+.navbar-fixed-top {
+    right: auto;
+    left: auto;
+    background-color: rgba(100, 100, 100, 0.9);
+}
+
+.icon-bar {
+    background-color: black;
+}
+
+.navbar-brand:hover {
+    text-shadow: 2px 2px 6px white, -2px -2px 6px white;
+    color: white;
+}
+
+.navbar-collapse {
+    padding-right: 0;
+}
+
+/* ---------------------------------------------- /*
+ * Button and input forms settings
+/* ---------------------------------------------- */
+.search-form {
+    text-align:right;
+    font-family: 'Courier New';
+    font-weight: bold;
+    display: inline;
+}
+
+.input-form {
+    height: 35px;
+    margin: 8px 0 2px 0;
+}
+
+.button-form {
+    height: 35px;
+    margin: 0 0 2px -10px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: black;
+    text-shadow: none;
+}
+
+.button-form:hover, .button-form:active {
+    color: white;
+    background-color: black;
+    text-shadow: 2px 2px 6px white, -2px -2px 6px white;
+}
+
+.bottom-options {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0 -15px 0 -15px;
+    padding: 10px 0 0 15px;
+    height: 40px;
+    font-family: 'Courier New';
+    font-size: 15px;
+}
+
+.bottom-options, .bottom-options > a, .country-link > a {
+    color: white;
+    text-shadow: none;
+}
+
+.delete {
+    padding: 2px 0 0 30px;
+}
+
+.bottom-options > a:hover, .country-link > a:hover {
+    text-shadow: 2px 2px 6px white, -2px -2px 6px white;
+    text-decoration: none;
+}
+
+/* ---------------------------------------------- /*
+ * Table design
+/* ---------------------------------------------- */
+.table-details {
+    margin-bottom: 0;
+}
+
+.no-margins {
+    margin: 0;
+}
+
+/* ---------------------------------------------- /*
+ * @media settings
+/* ---------------------------------------------- */
+@media (max-width: 1200px) {
+    .input-form {
+        width: 140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .search-form {
+        text-align: left;
+    }
+    .input-form {
+        margin-bottom: 10px;
+    }
+}

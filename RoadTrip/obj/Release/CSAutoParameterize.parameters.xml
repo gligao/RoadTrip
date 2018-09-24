@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="RoadTripEntities-Web.config Connection String" description="RoadTripEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.RoadTripModel.csdl|res://*/Models.RoadTripModel.ssdl|res://*/Models.RoadTripModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=C:\Dropbox\ovi\JustIt\ThirdProject\RoadTrip\Database\RoadTrip.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Dropbox\\ovi\\JustIt\\ThirdProject\\RoadTrip\\RoadTrip\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='RoadTripEntities']/@connectionString" />
+  </parameter>
+</parameters>
